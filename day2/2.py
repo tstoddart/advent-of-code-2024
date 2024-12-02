@@ -33,14 +33,21 @@ class Report():
 def exclude(lst, i):
         return lst[:i] + lst[i + 1:]
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     with open(sys.argv[1]) as f:
         lines = [list(map(int, l.split())) for l in f.read().splitlines()]
 
-    count = 0
-    for line in lines:
-        r = Report(line)
-        if r.isvalid():
-            count += 1
+    part1 = 0
+    part2 = 0
 
-    print(count)
+    for line in lines:
+        r = Report(line,dampener=False)
+        if r.isvalid():
+            part1 += 1
+    for line in lines:
+        r = Report(line,dampener=True)
+        if r.isvalid():
+            part2 += 1
+
+    print("part1 = ", part1)
+    print("part2 = ", part2)
