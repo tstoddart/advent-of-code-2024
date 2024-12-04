@@ -53,12 +53,12 @@ class WordSearch():
             # only look for x-mas if we haven't got to the end and add the check for the middle
             # string being 'A' as an easy optimisation
             if mi.shape == (3,3) and mi[1,1] == 'A':
-                if self.__contains_x_mas_part2(mi):
+                if self.__is_cross_mas_part2(mi):
                     count += 1
         return count
 
     # checks whether the 'compressed' array representing a 3x3 submatrix is a valid X-MAS.
-    def __contains_x_mas_part2(self, arr):
+    def __is_cross_mas_part2(self, arr):
         # once the 3x3 matrix has been flattened into a 1d array, only the odd indices matter to
         # determine if this is a valid X-MAS, so make a subarray of just those elements.
         flat_arr = arr.flatten()[0::2]
