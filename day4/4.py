@@ -7,7 +7,6 @@ import numpy as np
 with open(sys.argv[1]) as f:
     input = [list(l) for l in f.read().splitlines()]
 
-
 class WordSearch():
     def __init__(self, inp):
         self.inp = inp
@@ -26,7 +25,6 @@ class WordSearch():
             count += self.__count_xmas_in_matrix_part1(m, "XMAS")
 
         return count
-
 
     # helper function to count the occurrences of XMAS in a matrix, from
     # left to right, on rows and diagonals.
@@ -61,7 +59,11 @@ class WordSearch():
 
     # checks whether the 'compressed' array representing a 3x3 submatrix is a valid X-MAS.
     def __contains_x_mas_part2(self, arr):
+        # once the 3x3 matrix has been flattened into a 1d array, only the odd indices matter to
+        # determine if this is a valid X-MAS, so make a subarray of just those elements.
         flat_arr = arr.flatten()[0::2]
+
+        # there are four valid X-MASes corresponding to the rotations
         if list(flat_arr) in [ list("MSAMS"), list("SMASM"), list("MMASS"), list("SSAMM") ]:
             return True
         else:
