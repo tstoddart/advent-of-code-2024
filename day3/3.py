@@ -26,8 +26,7 @@ for m in matches:
         switch = False
     elif "mul" in m:
         sum_part1 += Mul(m).result
-        if switch is True:
-            sum_part2 += Mul(m).result
+        sum_part2 += Mul(m).result if switch is True
 
 print("part1 = ", sum_part1)
 print("part2 = ", sum_part2)
