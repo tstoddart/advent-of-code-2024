@@ -57,13 +57,13 @@ class WordSearch():
                     count += 1
         return count
 
-    # checks whether the 'compressed' array representing a 3x3 submatrix is a valid X-MAS.
+    # checks whether a 3x3 submatrix is a valid X-MAS.
     def __is_cross_mas_part2(self, arr):
         # once the 3x3 matrix has been flattened into a 1d array, only the odd indices matter to
         # determine if this is a valid X-MAS, so make a subarray of just those elements.
         flat_arr = arr.flatten()[0::2]
 
-        # there are four valid X-MASes corresponding to the rotations
+        # compare the flattened, 'compressed' array with the four valid X-MASes (corresponding to the rotations).
         if list(flat_arr) in [ list("MSAMS"), list("SMASM"), list("MMASS"), list("SSAMM") ]:
             return True
         else:
