@@ -24,7 +24,7 @@ def parse_rules_and_updates(inp):
     brk = inp.index('') # the blank line separates the updates from the rules
 
     rules = [ Rule(r) for r in inp[0:brk-1] ]
-    updates = [ [ int(i) for i in x.split(',') ] for x in inp[brk+1:]]
+    updates = [ [ int(i) for i in x.split(',') ] for x in inp[brk+1:] ]
 
     return rules, updates
 
@@ -54,7 +54,7 @@ def part2(rules, updates):
                     u[u.index(r.l[0])], u[u.index(r.l[1])] = r.l[1], r.l[0]
                     swaps+=1
 
-            # if there are no swaps then this update is valid against all the rules and we can break the infinite loop
+            # if there are no swaps then this update is valid against all the rules and we can break the loop
             if swaps == 0:
                 break
             elif swaps > 10000: # backstop to break the loop
